@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="mysqlgenerator" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="true"/>
+        <!--可以使用``包括字段名，避免字段名与sql保留字冲突报错-->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 自动生成toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 自动生成equals方法和hashcode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+
+        <!-- 非官方插件 https://github.com/itfsw/mybatis-generator-plugin -->
+        <!-- 查询单条数据插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectOneByExamplePlugin"/>
+        <!-- 查询结果选择性返回插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectSelectivePlugin"/>
+        <!-- Example Criteria 增强插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.ExampleEnhancedPlugin"/>
+        <!-- 数据Model属性对应Column获取插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <!-- 逻辑删除插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.LogicalDeletePlugin">
+            <!-- 这里配置的是全局逻辑删除列和逻辑删除值，当然在table中配置的值会覆盖该全局配置 -->
+            <!-- 逻辑删除列类型只能为数字、字符串或者布尔类型 -->
+            <property name="logicalDeleteColumn" value="deleted"/>
+            <!-- 逻辑删除-已删除值 -->
+            <property name="logicalDeleteValue" value="1"/>
+            <!-- 逻辑删除-未删除值 -->
+            <property name="logicalUnDeleteValue" value="0"/>
+        </plugin>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!--<property name="suppressAllComments" value="true"/>-->
+        </commentGenerator>
+
+        <!--数据库连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://rm-8vb1ja95babs6a4l8uo.mysql.zhangbei.rds.aliyuncs.com:3306/cpcad_user?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;verifyServerCertificate=false&amp;useSSL=false"
+                        userId="cpcAd"
+                        password="cpcAd@dev2019"/>
+
+        <javaTypeResolver>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.futou.cpcad.userCenter.db.domain" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.futou.cpcad.userCenter.db.dao" targetProject="src/main/resources"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.futou.cpcad.userCenter.db.dao"
+                             targetProject="src/main/java"/>
+
+
+        <!-- `user_company``user_link``user_mobile``user_payment``user_wx``user_role`  `bill_log`
+`user_property` -->
+
+<!--        <table tableName="user_payment">-->
+<!--        </table>-->
+<!--        <table tableName="user_company">-->
+<!--        </table>-->
+
+<!--        <table tableName="user_wx">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--            <columnOverride column="sex" javaType="java.lang.Integer"/>-->
+<!--        </table>-->
+<!--        <table tableName="user_link">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+
+<!--        <table tableName="user_role">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--            <columnOverride column="status" javaType="java.lang.Integer"/>-->
+<!--        </table>-->
+<!--        <table tableName="user_mobile">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--            <columnOverride column="status" javaType="java.lang.Integer"/>-->
+<!--        </table>-->
+
+
+        <table tableName="bill_log">
+        </table>
+
+        <table tableName="user_property"></table>
+        <!--
+        <table tableName="admin">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="role_ids" javaType="java.lang.Integer[]"
+                            typeHandler="JsonIntegerArrayTypeHandler"/>
+        </table>
+        <table tableName="shop">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="phones" javaType="java.lang.String[]"
+                            typeHandler="com.futou.cpcad.db.mybatis.JsonStringArrayTypeHandler"/>
+            <columnOverride column="images_links" javaType="java.lang.String[]"
+                            typeHandler="com.futou.cpcad.db.mybatis.JsonStringArrayTypeHandler"/>
+            <columnOverride column="region" javaType="java.lang.String[]"
+                            typeHandler="com.futou.cpcad.db.mybatis.JsonStringArrayTypeHandler"/>
+        </table>
+        ====================================================================================================
+
+        <table tableName="sys_dict_type">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+         <table tableName="sys_dict">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="ad_activity">
+            <columnOverride column="public_horn_cataegory" javaType="java.lang.String[]"
+                            typeHandler="com.futou.cpcad.db.mybatis.JsonStringArrayTypeHandler"/>
+            <columnOverride column="tags" javaType="java.lang.String[]"
+                            typeHandler="com.futou.cpcad.db.mybatis.JsonStringArrayTypeHandler"/>
+        </table>
+
+
+
+      <table tableName="sms_record">
+        <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+      </table>
+
+
+        <table tableName="wx_mp_info">
+        </table>
+
+        <table tableName="ad_article">
+
+        </table>
+
+
+
+        <table tableName="withdraw_application"></table>
+
+        <table tableName="user_score_record"/>
+        <table tableName="coupon"/>
+        <table tableName="user_coupon"/>
+        <table tableName="user_coupon_record"/>
+        <table tableName="system_settings"></table>
+        <table tableName="bill_log"></table>
+
+
+        <table tableName="score_task"/>
+
+        <table tableName="cpc_order">
+            <columnOverride column="appeal_images" javaType="java.lang.String[]"
+                            typeHandler="com.futou.cpcad.db.mybatis.JsonStringArrayTypeHandler"/>
+        </table>
+
+        <table tableName="article_monitor_data"/>
+        <table tableName="article_monitor_task" />
+
+        <table tableName="mp_article_statistics"/>
+
+        <table tableName="article_monitor_read_data"/>
+        <table tableName="article_monitor_read_task"/>
+
+        <table tableName="subscription_mp"/>
+
+        <table tableName="subscription_pull_increment"/>
+
+        <table tableName="msg_notice"/>
+
+        <table tableName="subscription_pull_increment"/>
+
+        <table tableName="cpc_order">
+            <columnOverride column="appeal_images" javaType="java.lang.String[]"
+                            typeHandler="com.futou.cpcad.db.mybatis.JsonStringArrayTypeHandler"/>
+        </table>
+
+        <table tableName="ad_article">
+
+        </table>
+
+        <table tableName="subscription_mp_history" />
+
+        <table tableName="detection_order_result"/>
+        <table tableName="ad_demand_mail_need"></table>
+        <table tableName="coupon_system_disburse"></table>
+
+         <table tableName="order_view_source"></table>
+
+        <table tableName="order_view_source_user_visit"></table>
+
+          <table tableName="user_recharge_log"></table>
+        -->
+
+        <table tableName="litemall_admin">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

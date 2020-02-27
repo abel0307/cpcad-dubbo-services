@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: db, redis
+  messages:
+    encoding: UTF-8
+
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  ERROR
+    org.mybatis:  ERROR
+    com.futou.cpcad.db:  DEBUG

@@ -1,0 +1,14 @@
+
+spring:
+  redis:
+    host: r-8vbe0jpbx78mq2uydapd.redis.zhangbei.rds.aliyuncs.com
+    port: 6379
+    password: Redis@2019
+    database: 0
+    jedis:
+      pool:
+        max-idle: 100
+        max-wait: -1
+        max-active: 100
+        min-idle: 0
+    timeout: 5000
